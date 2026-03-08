@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Survey Analysis Dashboard</title>
+    <link rel="stylesheet" href="/css/analysis.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  </head>
+  <body>
+    <main class="dashboard">
+      <header class="hero">
+        <div>
+          <h1>Survey Analyst View</h1>
+          <p>Server-side results dashboard for the Costco UI survey.</p>
+        </div>
+        <nav>
+          <a href="/survey">Back to survey</a>
+        </nav>
+      </header>
+
+      <section class="summary-grid" aria-label="Survey summary cards">
+        <article class="card stat-card">
+          <h2>Total submissions</h2>
+          <p class="stat-value"><%= submissionCount %></p>
+        </article>
+        <article class="card stat-card">
+          <h2>Average rating</h2>
+          <p class="stat-value"><%= averageRating %></p>
+        </article>
+      </section>
+
+      <section class="card">
+        <h2>Incoming answers</h2>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Time</th>
+                <th>Name</th>
+                <th>Task</th>
+                <th>Device</th>
+                <th>Ease</th>
+                <th>Rating</th>
+              </tr>
+            </thead>
+            <tbody>
+              <% submissions.slice().reverse().forEach(function(submission) { %>
+                <tr>
+                  <td><%= new Date(submission.submittedAt).toLocaleString() %></td>
+                  <td><%= [submission.firstname, submission.lastname].filter(Boolean).join(' ') || 'Anonymous' %></td>
+                  <td><%= submission.taskTried || '—' %></td>
+                  <td><%= submission.deviceUsed || '—' %></td>
+                  <td><%= submission.easeFinding || '—' %></td>
+                  <td><%= submission.overallRating || '—' %></td>
+                </tr>
+              <% }) %>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="chart-grid">
+        <% chartGroups.forEach(function(group, index) { %>
+          <article class="card chart-card">
+            <h2><%= group.label %></h2>
+            <canvas id="chart-<%= index %>" aria-label="<%= group.label %> chart" role="img"></canvas>
+            <ul class="count-list">
+              <% group.entries.forEach(function(entry) { 
+                   const entryKey = Object.keys(entry).find((key) => key !== 'count'); %>
+                <li><strong><%= entry[entryKey] %></strong>: <%= entry.count %></li>
+              <% }) %>
+            </ul>
+          </article>
+        <% }) %>
+      </section>
+
+      <section class="card">
+        <h2>Open-ended responses</h2>
+        <div class="text-grid">
+          <% textGroups.forEach(function(group) { %>
+            <article>
+              <h3><%= group.label %></h3>
+              <% if (group.entries.length === 0) { %>
+                <p>No responses yet.</p>
+              <% } else { %>
+                <ul class="response-list">
+                  <% group.entries.slice().reverse().forEach(function(entry) { %>
+                    <li><%= entry.value %></li>
+                  <% }) %>
+                </ul>
+              <% } %>
+            </article>
+          <% }) %>
+        </div>
+      </section>
+    </main>
+
+    <script>
+      const chartGroups = <%- JSON.stringify(chartGroups) %>;
+
+      chartGroups.forEach((group, index) => {
+        const labels = group.entries.map((entry) => {
+          const key = Object.keys(entry).find((item) => item !== 'count');
+          return entry[key];
+        });
+        const values = group.entries.map((entry) => Number(entry.count));
+        const total = values.reduce((sum, value) => sum + value, 0);
+        const chartType = group.key === 'liked' ? 'bar' : 'pie';
+
+        new Chart(document.getElementById(`chart-${index}`), {
+          type: chartType,
+          data: {
+            labels,
+            datasets: [{
+              label: group.label,
+              data: values,
+              borderWidth: 1
+            }]
+          },
+          options: {
+            responsive: true,
+            plugins: {
+              legend: { display: true },
+              tooltip: {
+                callbacks: {
+                  label: function(context) {
+                    const value = context.raw;
+                    const percentage = total ? ((value / total) * 100).toFixed(1) : 0;
+                    return `${context.label}: ${value} (${percentage}%)`;
+                  }
+                }
+              }
+            }
+          }
+        });
+      });
+    </script>
+  </body>
+</html>

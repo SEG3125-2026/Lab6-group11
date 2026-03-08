@@ -1,0 +1,46 @@
+[
+  {
+    "submissionId": "submission-1772993805511",
+    "submittedAt": "2026-03-08T18:16:45.511Z",
+    "firstname": "Justin",
+    "lastname": "Rackus",
+    "ageBelong": "between_16_and_25",
+    "taskTried": "search for an item",
+    "easeFinding": "easy",
+    "deviceUsed": "desktop",
+    "webVisit": "once_a_week",
+    "liked": [
+      "navigation",
+      "search"
+    ],
+    "speedOk": "yes",
+    "firstImpression": "organized",
+    "filterHelpfulness": "helpful",
+    "productInfoStatus": "sufficient_information_displayed",
+    "productInformation": "N/A",
+    "overallRating": "8",
+    "comments": "Looks good"
+  },
+  {
+    "submissionId": "submission-1772994466282",
+    "submittedAt": "2026-03-08T18:27:46.282Z",
+    "firstname": "Justin",
+    "lastname": "Rackus",
+    "ageBelong": "between_16_and_25",
+    "taskTried": "test",
+    "easeFinding": "easy",
+    "deviceUsed": "desktop",
+    "webVisit": "once_a_week",
+    "liked": [
+      "search",
+      "speed"
+    ],
+    "speedOk": "yes",
+    "firstImpression": "test",
+    "filterHelpfulness": "neutral",
+    "productInfoStatus": "sufficient_information_displayed",
+    "productInformation": "test",
+    "overallRating": "5",
+    "comments": "test"
+  }
+]

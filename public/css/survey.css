@@ -1,0 +1,184 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: "Segoe UI", sans-serif;
+  background: linear-gradient(180deg, #f1f9ff 0%, #b8d1ff 80%);
+  color: #122033;
+}
+
+.container {
+  width: min(960px, calc(100% - 32px));
+  margin: 32px auto;
+  padding: 32px;
+  background-color: #ffffff;
+  border-radius: 30px;
+  border: 1px solid #e5e7eb;
+  box-shadow: 0 10px 20px rgba(0, 93, 170, 0.2);
+}
+
+h1, h2, h3 {
+  line-height: 1.2;
+}
+
+.intro {
+  font-size: 1.05rem;
+}
+
+a {
+  color: #005daa;
+  font-weight: 600;
+}
+
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 16px;
+  margin: 24px 0;
+}
+
+.gallery img,
+.wide-image {
+  width: 100%;
+  border-radius: 12px;
+  border: 1px solid #d1d5db;
+}
+
+.zoom-card {
+  margin: 24px 0;
+}
+
+.zoom-controls {
+  max-width: 900px;
+}
+
+.zoom-controls input[type="radio"] {
+  display: none;
+}
+
+.zoom-controls > label {
+  display: inline-block;
+  margin: 0 8px 12px 0;
+  padding: 8px 14px;
+  border: 1px solid #d1d5db;
+  border-radius: 16px;
+  cursor: pointer;
+  background: #f4f4f4;
+  font-weight: 600;
+}
+
+#z-top:checked + label,
+#z-middle:checked + label,
+#z-bottom:checked + label {
+  background: #005daa;
+  color: white;
+  border-color: #005daa;
+}
+
+.img-zoom {
+  display: block;
+  width: 100%;
+  max-width: 900px;
+  height: 470px;
+  background-image: url("/images/FrontPage.png");
+  background-size: auto 100%;
+  background-position: center;
+  border-radius: 12px;
+  border: 1px solid #d1d5db;
+  transition: background-size 0.25s ease;
+  cursor: zoom-in;
+}
+
+.img-zoom:hover,
+.img-zoom:focus {
+  background-size: auto 165%;
+}
+
+#z-top:checked ~ .img-zoom { background-position: 50% 0%; }
+#z-middle:checked ~ .img-zoom { background-position: 50% 55%; }
+#z-bottom:checked ~ .img-zoom { background-position: center bottom; }
+
+form {
+  margin-top: 24px;
+}
+
+fieldset {
+  border: 1px solid #dbe4ef;
+  border-radius: 18px;
+  padding: 20px;
+  margin-bottom: 24px;
+}
+
+legend {
+  font-weight: 700;
+  padding: 0 10px;
+}
+
+label,
+.field-label,
+.hint {
+  display: block;
+  margin-bottom: 8px;
+}
+
+.option-group label {
+  display: block;
+  margin: 8px 0;
+}
+
+input[type="text"],
+input[type="number"],
+select,
+textarea {
+  width: min(100%, 560px);
+  padding: 10px 14px;
+  border-radius: 16px;
+  border: 1px solid #c6d2e0;
+  background-color: #f8fafc;
+  margin-bottom: 12px;
+}
+
+input[type="checkbox"],
+input[type="radio"] {
+  margin-right: 8px;
+}
+
+.block {
+  margin-top: 15px;
+  padding: 12px 28px;
+  border-radius: 20px;
+  background-color: #005daa;
+  border: none;
+  color: #ffffff;
+  font-weight: 600;
+  box-shadow: 0 10px 20px rgba(0, 93, 170, 0.25);
+  cursor: pointer;
+}
+
+.block:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+.status {
+  min-height: 24px;
+  font-weight: 600;
+}
+
+#signature {
+  margin-top: 40px;
+  text-align: center;
+  color: #6b7280;
+}
+
+@media (max-width: 700px) {
+  .container {
+    padding: 20px;
+  }
+
+  .img-zoom {
+    height: 280px;
+  }
+}
