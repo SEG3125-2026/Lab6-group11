@@ -2,5 +2,9 @@
   {
     "speedOk": "yes",
     "count": 2
+  },
+  {
+    "speedOk": "somewhat",
+    "count": 1
   }
 ]

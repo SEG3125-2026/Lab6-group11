@@ -173,6 +173,76 @@ input[type="radio"] {
   color: #6b7280;
 }
 
+.form-step{
+  display: none;
+}
+
+.form-step.active{
+  display: block;
+}
+
+.progress-wrap{
+  margin: 10px 0 28px;
+}
+
+.progress-text{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+  font-weight: 700;
+  color: #005daa;
+}
+
+.progress-bar{
+  width: 100%;
+  height: 14px;
+  background: #e5edf7;
+  border-radius: 999px;
+  overflow: hidden;
+}
+
+.progress-fill{
+  height: 100%;
+  width: 16.67%;
+  background: linear-gradient(90deg, #005daa 0%, #4a90e2 100%);
+  border-radius: 999px;
+  transition: width 0.3s ease;
+}
+
+.step-buttons{
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  margin-top: 20px;
+}
+
+.next-btn,
+.prev-btn{
+  padding: 12px 24px;
+  border-radius: 20px;
+  border-radius: 20px;
+  border: none;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.next-btn{
+  background-color: #005daa;
+  color: #ffffff;
+  box-shadow: 0 10px 20px rgba(0, 93, 170, 0.25);
+}
+
+.prev-btn{
+  background-color: #e5e7eb;
+  color: #122033;
+}
+
+.step-buttons .block{
+  margin-top: 0;
+}
+
+
 @media (max-width: 700px) {
   .container {
     padding: 20px;
@@ -180,5 +250,14 @@ input[type="radio"] {
 
   .img-zoom {
     height: 280px;
+  }
+
+  .step-buttons{
+    flex-direction: column;
+  }
+  .next-btn,
+  .prev-btn,
+  .step-buttons .block{
+    width: 100%
   }
 }

@@ -36,133 +36,195 @@
       </section>
 
       <form id="surveyForm" novalidate>
-        <fieldset>
-          <legend>Personal Information</legend>
-          <label for="firstname">First name</label>
-          <input id="firstname" type="text" name="firstname" autocomplete="given-name">
-
-          <label for="lastname">Last name</label>
-          <input id="lastname" type="text" name="lastname" autocomplete="family-name">
-
-          <p class="field-label">Age</p>
-          <div class="option-group">
-            <label><input type="radio" name="ageBelong" value="younger_than_15" required> Younger than 15</label>
-            <label><input type="radio" name="ageBelong" value="between_16_and_25"> Between 16 and 25</label>
-            <label><input type="radio" name="ageBelong" value="between_26_and_35"> Between 26 and 35</label>
-            <label><input type="radio" name="ageBelong" value="between_36_and_45"> Between 36 and 45</label>
-            <label><input type="radio" name="ageBelong" value="between_46_and_55"> Between 46 and 55</label>
-            <label><input type="radio" name="ageBelong" value="older_than_55"> Older than 55</label>
+        <div class="progress-wrap" aria-label="Survey Progress">
+          <div class="progress-text">
+            <span id="stepText">Step 1 of 6</span>
+            <span id="progressPercent">17%</span>
           </div>
-        </fieldset>
-
-        <fieldset>
-          <legend>Website Evaluation</legend>
-
-          <div class="question">
-            <label for="taskTried"><strong>1 - What task did you try on the website today?</strong></label>
-            <span class="hint">Example: browse deals, search for an item, build a cart.</span>
-            <input id="taskTried" name="taskTried" type="text" required>
+          <div class="progress-bar">
+            <div id="progressFill" class="progress-fill"></div>
           </div>
+        </div>
 
-          <div class="question">
-            <p class="field-label"><strong>2 - How easy was it to find what you were looking for?</strong></p>
-            <div class="option-group">
-              <label><input type="radio" name="easeFinding" value="very_easy" required> Very easy</label>
-              <label><input type="radio" name="easeFinding" value="easy"> Easy</label>
-              <label><input type="radio" name="easeFinding" value="neutral"> Neutral</label>
-              <label><input type="radio" name="easeFinding" value="hard"> Hard</label>
-              <label><input type="radio" name="easeFinding" value="very_hard"> Very hard</label>
-            </div>
-          </div>
-
-          <div class="question">
-            <label for="deviceUsed"><strong>3 - What device did you use?</strong></label>
-            <select name="deviceUsed" id="deviceUsed" required>
-              <option value="" selected disabled>Choose one</option>
-              <option value="desktop">Desktop / Laptop</option>
-              <option value="tablet">Tablet</option>
-              <option value="mobile">Mobile</option>
-            </select>
-          </div>
-
-          <div class="question">
-            <p class="field-label"><strong>4 - How often do you visit this website?</strong></p>
-            <div class="option-group">
-              <label><input type="radio" name="webVisit" value="every_day" required> Every day</label>
-              <label><input type="radio" name="webVisit" value="every_couple_of_days"> Every couple of days</label>
-              <label><input type="radio" name="webVisit" value="once_a_week"> Once a week</label>
-              <label><input type="radio" name="webVisit" value="every_couple_of_weeks"> Every couple of weeks</label>
-              <label><input type="radio" name="webVisit" value="once_a_month"> Once a month or less</label>
-            </div>
-          </div>
-
-          <div class="question">
-            <p class="field-label"><strong>5 - What did you like? Select all that apply.</strong></p>
-            <div class="option-group">
-              <label><input type="checkbox" name="liked" value="navigation"> Navigation / menus</label>
-              <label><input type="checkbox" name="liked" value="visual_design"> Visual design</label>
-              <label><input type="checkbox" name="liked" value="product_info"> Product information</label>
-              <label><input type="checkbox" name="liked" value="search"> Search / filters</label>
-              <label><input type="checkbox" name="liked" value="speed"> Speed / performance</label>
-              <label><input type="checkbox" name="liked" value="checkout"> Checkout / cart</label>
-            </div>
-          </div>
-
-          <div class="question">
-            <p class="field-label"><strong>6 - Did the pages load fast enough?</strong></p>
-            <div class="option-group">
-              <label><input type="radio" name="speedOk" value="yes" required> Yes</label>
-              <label><input type="radio" name="speedOk" value="somewhat"> Somewhat</label>
-              <label><input type="radio" name="speedOk" value="no"> No</label>
-            </div>
-          </div>
-
-          <div class="question">
-            <label for="firstImpression"><strong>7 - What is your first impression of the website's main page?</strong></label>
-            <span class="hint">Example: organized, cluttered, visually appealing, overwhelming.</span>
-            <input id="firstImpression" name="firstImpression" type="text" required>
-          </div>
-
-          <div class="question">
-            <p class="field-label"><strong>8 - How helpful do you find the filters shown below?</strong></p>
-            <img class="wide-image" src="/images/filterPage.png" alt="Screenshot showing Costco product filters">
-            <div class="option-group">
-              <label><input type="radio" name="filterHelpfulness" value="very_helpful" required> Very helpful</label>
-              <label><input type="radio" name="filterHelpfulness" value="helpful"> Helpful</label>
-              <label><input type="radio" name="filterHelpfulness" value="neutral"> Neither helpful nor unhelpful</label>
-              <label><input type="radio" name="filterHelpfulness" value="unhelpful"> Unhelpful</label>
-            </div>
-          </div>
-
-          <div class="question">
-            <p class="field-label"><strong>9 - What information is missing for the product shown below, if any?</strong></p>
-            <img class="wide-image" src="/images/cascadeProduct.png" alt="Screenshot of a Costco product page for Cascade dishwasher detergent">
-            <div class="option-group">
-              <label><input type="radio" name="productInfoStatus" value="sufficient_information_displayed" required> Sufficient information displayed</label>
-              <label><input type="radio" name="productInfoStatus" value="information_missing"> Information missing</label>
-            </div>
-            <label for="productInformation">Missing information details</label>
-            <input id="productInformation" name="productInformation" type="text" placeholder="Write N/A if nothing is missing" required>
-          </div>
-
-          <div class="question">
-            <label for="overallRating"><strong>10 - Overall, how would you rate the website UI?</strong></label>
-            <span class="hint">Use a number from 1 (poor) to 10 (excellent).</span>
-            <input id="overallRating" name="overallRating" type="number" min="1" max="10" required>
-          </div>
-
-          <div class="question">
-            <label for="comments"><strong>Additional comments</strong></label>
-            <textarea id="comments" name="comments" rows="5"></textarea>
-          </div>
-        </fieldset>
-
-        <button id="submitButton" type="submit" class="block">Submit your answers</button>
         <p id="statusMessage" class="status" aria-live="polite"></p>
-        <p id="signature">Site created by Group 11</p>
+
+
+        <section class="form-step active">
+          <fieldset>
+            <legend>Step 1 - Personal Information</legend>
+            <label for="firstname">First name</label>
+            <input id="firstname" type="text" name="firstname" autocomplete="given-name" required>
+
+            <label for="lastname">Last name</label>
+            <input id="lastname" type="text" name="lastname" autocomplete="family-name" required>
+
+            <p class="field-label">Age</p>
+            <div class="option-group">
+              <label><input type="radio" name="ageBelong" value="younger_than_15" required> Younger than 15</label>
+              <label><input type="radio" name="ageBelong" value="between_16_and_25"> Between 16 and 25</label>
+              <label><input type="radio" name="ageBelong" value="between_26_and_35"> Between 26 and 35</label>
+              <label><input type="radio" name="ageBelong" value="between_36_and_45"> Between 36 and 45</label>
+              <label><input type="radio" name="ageBelong" value="between_46_and_55"> Between 46 and 55</label>
+              <label><input type="radio" name="ageBelong" value="older_than_55"> Older than 55</label>
+            </div>
+          </fieldset>
+
+          <div class="step-buttons">
+            <button type="button" class="next-btn">Next</button>
+          </div>
+        </section>
+
+        <section class="form-step">
+          <fieldset>
+            <legend>Step 2 - Questions 1 and 2</legend>
+            <div class="question">
+              <label for="taskTried"><strong>1 - What task did you try on the website today?</strong></label>
+              <span class="hint">Example: browse deals, search for an item, build a cart.</span>
+              <input id="taskTried" name="taskTried" type="text" required>
+            </div>
+
+            <div class="question">
+              <p class="field-label"><strong>2 - How easy was it to find what you were looking for?</strong></p>
+              <div class="option-group">
+                <label><input type="radio" name="easeFinding" value="very_easy" required> Very easy</label>
+                <label><input type="radio" name="easeFinding" value="easy"> Easy</label>
+                <label><input type="radio" name="easeFinding" value="neutral"> Neutral</label>
+                <label><input type="radio" name="easeFinding" value="hard"> Hard</label>
+                <label><input type="radio" name="easeFinding" value="very_hard"> Very hard</label>
+              </div>
+            </div>
+          </fieldset>
+
+          <div class="step-buttons">
+            <button type="button" class="prev-btn">Back</button>
+            <button type="button" class="next-btn">Next</button>
+          </div>
+        </section>
+
+        <section class="form-step">
+          <fieldset>
+            <legend>Step 3 - Questions 3 and 4</legend>
+            <div class="question">
+              <label for="deviceUsed"><strong>3 - What device did you use?</strong></label>
+              <select name="deviceUsed" id="deviceUsed" required>
+                <option value="" selected disabled>Choose one</option>
+                <option value="desktop">Desktop / Laptop</option>
+                <option value="tablet">Tablet</option>
+                <option value="mobile">Mobile</option>
+              </select>
+            </div>
+
+            <div class="question">
+              <p class="field-label"><strong>4 - How often do you visit this website?</strong></p>
+              <div class="option-group">
+                <label><input type="radio" name="webVisit" value="every_day" required> Every day</label>
+                <label><input type="radio" name="webVisit" value="every_couple_of_days"> Every couple of days</label>
+                <label><input type="radio" name="webVisit" value="once_a_week"> Once a week</label>
+                <label><input type="radio" name="webVisit" value="every_couple_of_weeks"> Every couple of weeks</label>
+                <label><input type="radio" name="webVisit" value="once_a_month"> Once a month or less</label>
+              </div>
+            </div>
+          </fieldset>
+
+          <div class="step-buttons">
+            <button type="button" class="prev-btn">Back</button>
+            <button type="button" class="next-btn">Next</button>
+          </div>
+        </section>
+
+        <section class="form-step">
+          <fieldset>
+            <legend>Step 4 - Questions 5 and 6</legend>
+            <div class="question">
+              <p class="field-label"><strong>5 - What did you like? Select all that apply.</strong></p>
+              <div class="option-group">
+                <label><input type="checkbox" name="liked" value="navigation"> Navigation / menus</label>
+                <label><input type="checkbox" name="liked" value="visual_design"> Visual design</label>
+                <label><input type="checkbox" name="liked" value="product_info"> Product information</label>
+                <label><input type="checkbox" name="liked" value="search"> Search / filters</label>
+                <label><input type="checkbox" name="liked" value="speed"> Speed / performance</label>
+                <label><input type="checkbox" name="liked" value="checkout"> Checkout / cart</label>
+              </div>
+            </div>
+
+            <div class="question">
+              <p class="field-label"><strong>6 - Did the pages load fast enough?</strong></p>
+              <div class="option-group">
+                <label><input type="radio" name="speedOk" value="yes" required> Yes</label>
+                <label><input type="radio" name="speedOk" value="somewhat"> Somewhat</label>
+                <label><input type="radio" name="speedOk" value="no"> No</label>
+              </div>
+            </div>
+          </fieldset>
+
+          <div class="step-buttons">
+            <button type="button" class="prev-btn">Back</button>
+            <button type="button" class="next-btn">Next</button>
+          </div>
+        </section>
+
+        <section class="form-step">
+          <fieldset>
+            <legend>Step 5 - Questions 7 and 8</legend>
+            <div class="question">
+              <label for="firstImpression"><strong>7 - What is your first impression of the website's main page?</strong></label>
+              <span class="hint">Example: organized, cluttered, visually appealing, overwhelming.</span>
+              <input id="firstImpression" name="firstImpression" type="text" required>
+            </div>
+
+            <div class="question">
+              <p class="field-label"><strong>8 - How helpful do you find the filters shown below?</strong></p>
+              <img class="wide-image" src="/images/filterPage.png" alt="Screenshot showing Costco product filters">
+              <div class="option-group">
+                <label><input type="radio" name="filterHelpfulness" value="very_helpful" required> Very helpful</label>
+                <label><input type="radio" name="filterHelpfulness" value="helpful"> Helpful</label>
+                <label><input type="radio" name="filterHelpfulness" value="neutral"> Neither helpful nor unhelpful</label>
+                <label><input type="radio" name="filterHelpfulness" value="unhelpful"> Unhelpful</label>
+              </div>
+            </div>
+          </fieldset>
+
+          <div class="step-buttons">
+            <button type="button" class="prev-btn">Back</button>
+            <button type="button" class="next-btn">Next</button>
+          </div>
+        </section>
+
+        <section class="form-step">
+          <fieldset>
+            <legend>Step 6 - Questions 9 and 10</legend>
+            <div class="question">
+              <p class="field-label"><strong>9 - What information is missing for the product shown below, if any?</strong></p>
+              <img class="wide-image" src="/images/cascadeProduct.png" alt="Screenshot of a Costco product page for Cascade dishwasher detergent">
+              <div class="option-group">
+                <label><input type="radio" name="productInfoStatus" value="sufficient_information_displayed" required> Sufficient information displayed</label>
+                <label><input type="radio" name="productInfoStatus" value="information_missing"> Information missing</label>
+              </div>
+              <label for="productInformation">Missing information details</label>
+              <input id="productInformation" name="productInformation" type="text" placeholder="Write N/A if nothing is missing" required>
+            </div>
+
+            <div class="question">
+              <label for="overallRating"><strong>10 - Overall, how would you rate the website UI?</strong></label>
+              <span class="hint">Use a number from 1 (poor) to 10 (excellent).</span>
+              <input id="overallRating" name="overallRating" type="number" min="1" max="10" required>
+            </div>
+
+            <div class="question">
+              <label for="comments"><strong>Additional comments</strong></label>
+              <textarea id="comments" name="comments" rows="5"></textarea>
+            </div>
+          </fieldset>
+
+          <div class="step-buttons">
+            <button type="button" class="prev-btn">Back</button>
+            <button id="submitButton" type="submit" class="block">Submit your answers!</button>
+          </div>
+
+          <p id="signature">Site created by Group 11</p>
+        </section>
       </form>
     </main>
-
     <script src="/js/action.js"></script>
   </body>
 </html>
