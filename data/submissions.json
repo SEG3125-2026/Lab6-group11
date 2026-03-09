@@ -42,5 +42,27 @@
     "productInformation": "test",
     "overallRating": "5",
     "comments": "test"
+  },
+  {
+    "submissionId": "submission-1773026769061",
+    "submittedAt": "2026-03-09T03:26:09.061Z",
+    "firstname": "Sedra",
+    "lastname": "Hamida",
+    "ageBelong": "between_16_and_25",
+    "taskTried": "search for an item",
+    "easeFinding": "hard",
+    "deviceUsed": "desktop",
+    "webVisit": "once_a_month",
+    "liked": [
+      "navigation",
+      "search"
+    ],
+    "speedOk": "somewhat",
+    "firstImpression": "cluttered",
+    "filterHelpfulness": "helpful",
+    "productInfoStatus": "sufficient_information_displayed",
+    "productInformation": "N/A",
+    "overallRating": "4",
+    "comments": ""
   }
 ]

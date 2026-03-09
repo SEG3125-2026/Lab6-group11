@@ -2,5 +2,9 @@
   {
     "easeFinding": "easy",
     "count": 2
+  },
+  {
+    "easeFinding": "hard",
+    "count": 1
   }
 ]
